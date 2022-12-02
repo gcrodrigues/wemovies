@@ -29,6 +29,7 @@ export const MyBasket = styled.div`
 
 		span {
 			color: ${({ theme }) => theme.colors.gray};
+			font-size: 1.2rem;
 		}
 	}
 `
