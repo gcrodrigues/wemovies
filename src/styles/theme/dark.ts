@@ -6,5 +6,7 @@ export const dark: DefaultTheme = {
 		'dark-gray': '#333333',
 		white: '#ffffff',
 		gray: '#999999',
+		blue: '#009EDD',
+		green: '#039B00',
 	},
 }
