@@ -26,6 +26,10 @@ export default createGlobalStyle`
 		max-width: 960px;
 		margin: 0 auto;
 	}
+
+	button {
+		cursor: pointer;
+	}
 	
 	@media screen and (min-width: 768px) {		
 		body {
