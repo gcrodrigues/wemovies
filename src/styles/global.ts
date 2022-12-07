@@ -30,6 +30,15 @@ export default createGlobalStyle`
 	button {
 		cursor: pointer;
 	}
+
+	input[type=number]::-webkit-inner-spin-button, 
+	input[type=number]::-webkit-outer-spin-button { 
+		-webkit-appearance: none; 
+	}
+
+	input[type=number] {
+		-moz-appearance: textfield;
+	}
 	
 	@media screen and (min-width: 768px) {		
 		body {
