@@ -1,6 +1,7 @@
-export type IProduct = {
+export interface IProduct {
 	id: number
 	title: string
 	price: number
 	image: string
+	amount: number
 }
