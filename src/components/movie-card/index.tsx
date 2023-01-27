@@ -3,16 +3,29 @@ import { ReactSVG } from 'react-svg'
 import { IProduct } from '../../types'
 import { Button, Container, Price, Title } from './styles'
 import cart from '../../assets/icons/cart.svg'
+import { useCart } from '../../context/context'
+import { useState } from 'react'
+import { ADD_PRODUCT } from '../../context/reducers'
+import { ptBrCurrency } from '../../utils'
 
 type MovieCardProps = {
 	movie: IProduct
 }
 
 function MovieCard({ movie }: MovieCardProps) {
-	const priceFormated = new Intl.NumberFormat('pt-BR', {
-		style: 'currency',
-		currency: 'BRL',
-	}).format(movie.price)
+	const {
+		state: { products },
+		dispatch,
+	} = useCart()
+	const [variant, setVariant] = useState<'success' | 'default'>('default')
+	const priceFormated = ptBrCurrency(movie.price)
+
+	function handleAddMovieToCart() {
+		setVariant('success')
+		dispatch({ type: ADD_PRODUCT, payload: movie })
+
+		setTimeout(() => setVariant('default'), 2000)
+	}
 
 	return (
 		<Container>
@@ -20,8 +33,16 @@ function MovieCard({ movie }: MovieCardProps) {
 			<Title>{movie.title}</Title>
 			<Price>{priceFormated}</Price>
 
-			<Button>
-				<div>{<ReactSVG src={cart} />} 0</div> Adicionar ao carrinho
+			<Button variant={variant} onClick={handleAddMovieToCart}>
+				<div>
+					<ReactSVG src={cart} />
+					{products.map(product => {
+						if (movie.id === product.id) {
+							return product.amount
+						}
+					})}
+				</div>
+				{variant === 'success' ? 'Item Adicionado' : 'Adicionar ao carrinho'}
 			</Button>
 		</Container>
 	)
