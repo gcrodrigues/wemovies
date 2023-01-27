@@ -36,11 +36,14 @@ function MovieCard({ movie }: MovieCardProps) {
 			<Button variant={variant} onClick={handleAddMovieToCart}>
 				<div>
 					<ReactSVG src={cart} />
-					{products.map(product => {
-						if (movie.id === product.id) {
-							return product.amount
-						}
-					})}
+					<span>
+						{products &&
+							products.length &&
+							products.filter(product => {
+								if (product.id !== movie.id) return
+								return product
+							})[0]?.amount | 0}
+					</span>
 				</div>
 				{variant === 'success' ? 'Item Adicionado' : 'Adicionar ao carrinho'}
 			</Button>
