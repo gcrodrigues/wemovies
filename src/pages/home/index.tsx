@@ -15,7 +15,7 @@ function Home() {
 		}
 
 		fetchMovieList()
-	}, [])
+	}, [setMovies])
 
 	return (
 		<Container>
