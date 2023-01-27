@@ -1,3 +1,5 @@
 export { default as Button } from './button'
 export { default as Header } from './header'
 export { default as MovieCard } from './movie-card'
+export { default as PlusMinusInput } from './plus-minus-input'
+export { default as CartItem } from './cart-item'
