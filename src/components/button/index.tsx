@@ -5,15 +5,17 @@ import { Container } from './styles'
 type ButtonProps = {
 	className?: string
 	variant?: 'default' | 'success'
+	onClick: () => void
 } & PropsWithChildren
 
 export function Button({
 	className,
 	variant = 'default',
 	children,
+	onClick,
 }: ButtonProps) {
 	return (
-		<Container variant={variant} className={className}>
+		<Container onClick={onClick} variant={variant} className={className}>
 			{children}
 		</Container>
 	)
