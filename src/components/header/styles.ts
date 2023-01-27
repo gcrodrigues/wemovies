@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Container = styled.header`
@@ -12,10 +13,20 @@ export const Container = styled.header`
 	}
 `
 
-export const MyBasket = styled.div`
+export const MyBasket = styled(Link)`
+	color: ${({ theme }) => theme.colors.white};
+	text-decoration: none;
 	display: flex;
 	gap: 1rem;
 	align-items: center;
+	cursor: pointer;
+	padding: 0.4rem 0.6rem;
+	border-radius: 0.4rem;
+	transition: color 0.2s ease;
+
+	&:hover {
+		color: ${({ theme }) => theme.colors.blue};
+	}
 
 	> div {
 		display: flex;
